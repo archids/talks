@@ -1,0 +1,41 @@
+digraph {
+  rankdir="LR"
+  // rankdir="TB"
+  
+  graph [fontname = "Roboto" fontsize = "9" splines=ortho nodesep=0.3 ];
+  node  [fontname = "Roboto" fontsize = "9"];
+  edge  [fontname = "Roboto" fontsize = "9"];
+
+  // nodes
+  A [ label="Choose model" shape="box"]
+  B [ label="Stan program" shape="box"]
+	subgraph cluster_0 {
+		label = "Make";
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+    C [ label="C++ code"     shape="box"]
+    D [ label="Executable"   shape="box"]
+	}
+  E [ label="Simulation"   shape="box"]
+  G [ label="Data"         shape="box"]
+  F [ label="Evaluate"     shape="diamond"]
+  H [ label="Done"         shape="box"]
+
+  // edges
+  edge[ weight=3 ];
+    A -> B [ style = "dashed" label = ""]
+    B:e -> C:w [ style = "dashed" label = "Stan parser"]
+  	C -> D [ style = "solid" label = "Compiler"]
+    D -> E -> F -> H [ style = "dashed" label = ""]
+  edge[ weight=1 ];
+    // F:s -> B:s [ style = "dashed" label = ""]
+    G -> E [ style = "dashed" label = ""]
+  
+  // {rank = same; A; B; }
+  // {rank = same; C; D;}
+  {rank = source; A;}
+  {rank = same; G; E;}
+  {rank = sink; H;}
+  // {rank = sink; H;}
+}

@@ -1,0 +1,182 @@
+body {
+	background: none;
+	font-family: Quicksand;
+}
+
+.reveal section {
+	font-family: Quicksand, Lato, sans-serif;
+}
+
+body > div > .slides {
+  width: 80% !important;
+}
+
+h2, p {
+  text-align: left;
+}
+#title-page .title {
+  font-size: 2.0em;
+  margin-bottom: 10px;
+}
+#title-page .subtitle {
+  font-size: 1.25em;
+  color: #464646;
+}
+#title-page .author {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+#title-page .author-info {
+  text-align: center;
+  font-size: 0.625em;
+  margin-bottom: 10px;
+}
+#title-page .location {
+  font-size: 0.75em;
+  color: #464646;
+  margin-bottom: 0px;
+}
+#title-page .date {
+  font-size: 0.75em;
+  color: #464646;
+}
+#title-page .logo {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.reveal section img {
+  border: none;
+  box-shadow: none;
+  margin: 0px;
+}
+
+.reveal pre {
+  box-shadow: none;
+  width: 100%;
+}
+.reveal pre > code {
+  background-color: transparent;
+  max-height: none;
+}
+.reveal pre > .sourceCode {
+  background-color: rgba(52, 152, 219, 0.25);
+}
+
+/* Two column output (use a <div> for each column). */
+
+#left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:50%;
+  z-index:-10;
+}
+#right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:50%;
+}
+
+/* SECTION HEADINDES ------------------------------------------------------- */
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+	/* text-transform: none;
+	margin: 0 0 20px 0; */
+  font-family: "Quicksand", "News Cycle", Impact, sans-serif;
+  /* line-height: 1.2;
+  text-shadow: none;
+  word-wrap: break-word; */
+}
+
+.reveal h1 {
+	/* Other options for font-family: 'Bungee', 'Kelly Slab'. */
+	/* font-family: 'Fredericka the Great'; */
+	/* font-size: 3.5em;
+  font-weight: normal;
+  padding-bottom: 5px;
+  border-bottom: 2px solid black; */
+}
+
+/* CODE -------------------------------------------------------------------- */
+
+.reveal code {
+	font-family: 'Roboto Mono', monospace;
+	font-size: 1em;
+}
+.reveal pre {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+p code,
+ul > li > code {
+	color: #c7254e;
+    background-color: white;
+}
+
+/* LISTS ------------------------------------------------------------------- */
+
+.reveal ul, .reveal ol {
+  display: block;
+}
+
+/* HEADERS & FOOTERS ------------------------------------------------------- */
+
+#header-left {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+#header-right {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+#footer-left {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+}
+
+/* BLOCKQUOTE -------------------------------------------------------------- */
+
+.reveal blockquote {
+	background-color: rgba(56, 99, 160, 0.1);
+	border-style: dashed;
+	border-width: 1px;
+	width: auto;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: left;
+}
+
+.reveal blockquote p:first-child,
+.reveal blockquote p:last-child {
+     display: block; 
+}
+
+.reveal blockquote p {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.reveal blockquote p:first-child {
+	margin-top: 10px;
+}
+
+.reveal blockquote p:last-child {
+	margin-bottom: 10px;
+}
+
+.reveal blockquote > cite {
+  font-style: normal;
+  display: block;
+  text-align: right;
+}
