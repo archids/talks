@@ -1,0 +1,459 @@
+<!doctype html>
+<!--
+LINUX
+=====
+
+Launch this with $ python -m SimpleHTTPServer
+
+WINDOWS
+=======
+
+Put file in a folder under C:\inetpub\wwwroot, like C:\inetpub\wwwroot\productivity-hacks\.
+Access at http://localhost/productivity-hacks/.
+-->
+
+<!-- Visit http://localhost:8001/?print-pdf#/ to print a PDF copy. -->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Data Science Productivity Hacks</title>
+
+        <link rel="icon" type="image/png" href="images/logo-r-icon.png" />
+
+        <!-- CDN Versions (for deployment). -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/css/reveal.css">
+        <!-- <link rel="stylesheet" href="http://cdn.rawgit.com/hakimel/reveal.js/3.5.0/css/theme/sky.css" id="theme"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="exegetic-reveal.css">
+
+        <style>
+.gist-file {
+    margin-top: 20px !important;
+}
+.gist .blob-code-inner {
+    font-size: 18px !important;
+}
+.reveal .large {
+    font-size: 2em;
+}
+        </style>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section class="titleslide center">
+                    <h1>Productivity Hacks</h1>
+                    <h2 class="subtitle">Do more Data Science, faster!</h2>
+                    <div class="author">Andrew Collier</div>
+                    <div class="date">satRday, Cape Town<br>17 March 2018</div>
+
+                    <br><br>
+
+                    <div class="author-info">
+                        <i class="fa fa-envelope fa-lg"></i> andrew@exegetic.biz
+                        |
+                        <i class="fab fa-twitter fa-lg"></i> <a href="https://twitter.com/DataWookie">DataWookie</a>
+                        |
+                        <i class="fab fa-github fa-lg"></i> <a href="https://github.com/DataWookie">DataWookie</a>
+                    </div>
+                    <br>
+                    <br>
+                    <img src="images/exegetic-new-logo.svg" width="256" style="text-align: center; background-color: #bbbbbb; padding: 15px; border-radius: 10px;"/ alt="Exegetic logo">
+                </section>
+                <section class="center">
+                    <div class="bg-primary large text-center">How can I be more productive?</div>
+                    <div class="text-center">(And have more fun in the process.)</div>
+                    <br>
+                    <br>
+                    <p>These are just four ways. There are <em>many</em> more.</p>
+                </section>
+                <section>
+                    <section class="center horizontal-center">
+                        <h1 class="title">1. Configure in Head</h1>
+                        <h2 class="subtitle">Set configuration variables before anything else</h2>
+                    </section>
+                    <section class="center">
+                        <h2>Typical Script Layout</h2>
+                        <ol>
+                            <li> Load libraries</li>
+                            <li> Load data</li>
+                            <li> Prepare data</li>
+                            <li> Do analysis</li>
+                            <li> <i class="fa fa-save"></i>, <i class="fa fa-upload"></i> or <i class="fa fa-envelope"></i> results (optional)</li>
+                            <li> Clean up</li>
+                        </ol>
+<!-- <script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=typical-script-layout.R"></script> -->
+                    </section>
+                    <section class="center horizontal-center">
+                        <p>Where are configuration variables defined?</p>
+                    </section>
+                    <section>
+                        <p>Often they're scattered across the script.</p>
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=scattered-configuration.R"></script>
+                        <p>Inefficient and prone to errors.</p>
+                    </section>
+                    <section class="center horizontal-center">                        
+                        <img src="images/jackson-pollock.jpg" width="100%">
+                        <aside class="notes">
+                            I think of this as the Jackson Pollock approach to scripting: configuration variables scattered across the script like blobs of paint across a canvas. Aesthetically pleasing, perhaps, but not very practical.
+                        </aside>
+                    </section>
+<!--                     <section data-background-image="gordon-ramsay-not-good-enough.jpg" data-background-size="auto 90%">
+                    </section> -->
+                    <section>
+                        <h2>A Better Way</h2>
+
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=configuration-static.R"></script>
+
+                        <p>Mostly this is good, but storing credentials in a script is a <em>very bad idea</em>!</p>
+                    </section>
+                    <section>
+                        <h2>An Even Better Way</h2>
+
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=configuration-environment.R"></script>
+
+                        <p>Storing credentials in the environment is somewhat better.</p>
+                    </section>
+                </section>
+<!--                 <section>
+                    <section>
+                        <h1 class="title">Libraries Come Next</h1>
+                        <h2 class="subtitle"></h2>
+                    </section>
+                    <section>
+                        <p>Nothing worse than getting half way through a script and finding that you are missing a library.
+                    </section>
+                </section> -->
+                <section>
+                    <section class="center horizontal-center">
+                        <h1 class="title">2. Ditch RStudio</h1>
+                        <h2 class="subtitle">Learn to <i class="fa fa-heart fa-lg"></i> the shell</h2>
+                    </section>                    
+                    <section class="center horizontal-center">
+                        <img src="images/heresy.jpg" width="100%" />
+                        <aside class="notes">
+                            I know that this sounds like heresy, but bear with me.
+                        </aside>
+                    </section>
+                    <section class="center">
+                        <div class="bg-primary large text-center">There was a time before RStudio!</div>
+                        <br>
+                        <br>
+                        <div class="fragment">
+                            <p>Actually there was quite a <em>long</em> time before RStudio!</p>
+                            <ul>
+                                <li>2011 - First RStudio release</li>
+                                <li>1995 - First R release</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Using Rscript</h2>
+                        <p>Write a <code>hello-world.sh</code> script.</p>
+
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=hello-world.sh"></script>
+
+                        <p>The first line tells the shell what interpreter to use.</p>
+                        <p>Make it executable.</p>
+                        <pre><code class="bash" data-noescape>
+$ chmod u+x hello-world.sh
+                        </code></pre>
+                        <p>Run it.</p>
+                        <pre><code class="bash" data-noescape>
+$ ./hello-world.sh
+Hello World!
+                        </code></pre>
+
+                        <p>When to use <code>Rscript</code>?</p>
+                        <ul>
+                            <li> If you want a standalone executable.</li>
+                            <li> If configuration comes from the environment.</li>
+                        </ul>
+                    </section>
+<!--                     <section>
+                        <h2>sed: Text Substitution</h2>
+                        <p>There's a <u>massive</u> range of things possible from the command line.</p>
+                        <p>Sed is a stream editor which uses regular expressions to modify text.</p>
+                        <pre><code class="text" data-noescape>
+$ echo "My dog could do better!" | sed 's/dog/gran/'
+My gran could do better!
+                        </code></pre>
+                        <pre><code class="text" data-noescape>
+$ echo "But she's deaf!" | sed 's/^[^ ]*/And/;s/f\(!\)/d\1/'
+And she's dead!
+                        </code></pre>
+                    </section> -->
+                    <section>
+                        <h2>Using (Command Line) R</h2>
+                        <p>Write a <code>hello-world.R</code> script.</p>
+
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=hello-world.R"></script>
+
+                        <p>Pipe it through the R interpreter.</p>
+                        <pre><code class="text" data-noescape>
+$ cat hello-world.R | R --slave
+Hello World!
+                        </code></pre>
+
+                        <p>When to just use <code>R</code>?</p>
+                        <ul>
+                            <li> If you want a script that still plays nicely in RStudio.</li>
+                            <li> If you want to launch multiple configurations.</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section class="center horizontal-center">
+                        <h1 class="title">3. Flexible Configuration</h1>
+                        <h2 class="subtitle">One script, many jobs</h2>
+                    </section>
+                    <section>
+                        <h2>Text Substitution</h2>
+                        <script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=hello-world-variable.R"></script>
+                        <p>By default <code>name</code> is set to <code>"World"</code>.</p>
+                        <pre><code class="text" data-noescape>
+$ cat hello-world-variable.R | R --slave
+Hello World!
+                        </code></pre>
+
+                        <p>Sprinkle some shell magic! <i class="fa fa-magic"></i> Use <code>sed</code> to substitute <code>"useRs"</code> in place of <code>"World"</code>.</p>
+                        <pre><code class="text" data-noescape>
+$ sed 's/World/useRs/' hello-world-variable.R | R --slave
+Hello useRs!
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Environment Variables</h2>
+                        <script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=hello-world-environment.R"></script>
+                        <p>By default <code>name</code> is set to <code>"World"</code>.</p>
+                        <pre><code class="text" data-noescape>
+$ cat hello-world-environment.R | R --slave
+Hello World!
+                        </code></pre>
+                        <p>Defining a <code>NAME</code> environment variable causes <code>name</code> to be set to <code>"useRs"</code>.</p>
+                        <pre><code class="text" data-noescape>
+$ NAME=useRs && cat hello-world-environment.R | R --slave
+Hello useRs!
+                        </code></pre>
+                    </section>
+                    <section class="center horizontal-center">
+                        <img src="images/buffon-needle.svg" width="100%" />
+                        <p>Buffon's Needle experiment.</p>
+                        <br>
+                        <blockquote>
+                            Suppose we have a floor made of parallel strips of wood, each the same width, and we drop a needle onto the floor. What is the probability that the needle will lie across a line between two strips?
+                            <!-- <cite>Georges-Louis Leclerc, Comte de Buffon (18th Century)</cite> -->
+                        </blockquote>
+                    </section>
+                    <section>
+                        <h2>Multiple Configurations</h2>
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=buffon-needle-configuration.R"></script>
+<p>Changing the value of <code>RATIO</code>.</p>
+                        <pre><code class="text" data-noescape>
+$ sed "s/\(^RATIO   =\).*/\1 0.25/" buffon-needle-configuration.R
+# CONFIGURATION ---------------------------------------------------------------
+
+RATIO   = 0.25
+SAMPLES = 500000        # Number of times that the needle is dropped.
+SEED    = 13            # Random seed for repeatability.
+
+# -----------------------------------------------------------------------------
+                        </code></pre>
+<p>Can change the value of <code>SAMPLES</code> too.</p>
+<!--                         <pre><code class="text" data-noescape>
+$ sed "s/\(SAMPLES =\).*/\1 1000000/" buffon-needle.R
+                        </code></pre> -->
+<p>Can also change the value of <em>both</em> <code>RATIO</code> and <code>SAMPLES</code>.</p>
+<!--                         <pre><code class="text" data-noescape>
+$ sed "s/\(SAMPLES =\).*/\1 1000000/;s/\(RATIO   =\).*/\1 0.2/" buffon-needle.R
+                        </code></pre> -->
+                    </section>
+
+                    <section>
+                        <h2>Script It!</h2>
+<script src="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4.js?file=run-buffon-needle-multiple.sh"></script>
+                    </section>
+                </section>
+                <section>
+                    <section class="center horizontal-center">
+                        <h1 class="title">4. Use the Cloud</h1>
+                        <h2 class="subtitle">Massive compute (on a budget)</h2>
+                    </section>
+                    <section>
+                        <h2>Wish List</h2>
+                        <ol>
+                            <li class="fragment"> World Peace.</li>
+                            <li class="fragment"> A massive computer with
+                            <ol>
+                                <li> 128 CPUs,</li>
+                                <li> 4192 RAM and</li>
+                                <li> a blazing fast network connection.</li>
+                            </ol></li>
+                        </ol>
+                        <p class="fragment">But I only need it for half an hour.</p>
+                        <p class="fragment">And my budget is $15.</p>
+                        <aside class="notes">
+                            I like to think of myself as a practical man. So my wish list is short. And practical.
+                        </aside>
+                    </section>
+                    <section data-background-image="ferrari.jpg">
+                    </section>
+                    <section data-background-image="old-bicycle.jpg">
+                    </section>
+                    <section>
+                        <h2>Cloud Solution</h2>
+
+                        <p>If you have</p>
+                        <ul>
+                            <li> a credit card and</li>
+                            <li> a SSH client</li>
+                        </ul>
+                        <p>then you can have this massive computer.</p>
+                        <p>You can spin it up for just half an hour. And it'll be within budget.</p>
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td></td>
+                                                <th>Machine #1</th>
+                                                <th>Machine #2</th>
+                                            </tr>
+                                        </thead>
+                                        <tr>
+                                            <td>CPUs</td>
+                                            <td align="right">1</td>
+                                            <td align="right">128</td>
+                                        </tr>
+                                        <tr>
+                                            <td>RAM (GB)</td>
+                                            <td align="right">1</td>
+                                            <td align="right">4192</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cost ($/hour)</td>
+                                            <td align="right">0.0035</td>
+                                            <td align="right">26.688</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="50%"><img src="images/aws-logo.png" width="100%"></td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <section>
+                    <section class="center horizontal-center">
+                        <h1 class="title">Demo</h1>
+                        <h2 class="subtitle">Show us!</h2>
+                        <br>
+                        <!-- Find in "Creator Studio" on YouTube (link under face on RHS). -->
+                        <p>View <a href="https://www.youtube.com/embed/wisA9KsShsE?rel=0&autoplay=1">demo</a> on <i class="fab fa-youtube"></i>.</p>
+                    </section>
+                </section>
+                <section>
+                    <section class="center horizontal-center">
+                        <div class="author-info">
+                            <i class="fa fa-envelope fa-lg"></i> andrew@exegetic.biz
+                            |
+                            <i class="fab fa-twitter fa-lg"></i> <a href="https://twitter.com/DataWookie">DataWookie</a>
+                            |
+                            <i class="fab fa-github fa-lg"></i> <a href="https://github.com/DataWookie">DataWookie</a>
+                        </div>
+                        <br>
+                        <br>
+                        <!-- Find in "Creator Studio" on YouTube (link under face on RHS). -->
+                        <p>Code available <a href="https://gist.github.com/DataWookie/df8d37b80c2928ce3f30b02d88ad3cf4">here</a> on <i class="fab fa-github"></i>.</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <!-- Local versions (for development). -->
+        <!-- <script src="./reveal.js-3.5.0/lib/js/head.min.js"></script> -->
+        <!-- <script src="./reveal.js-3.5.0/js/reveal.js"></script> -->
+
+        <!-- CDN Versions (for deployment). -->
+        <script src="https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/lib/js/head.min.js"></script>
+        <script src="https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/js/reveal.js"></script>
+
+        <script>
+Reveal.initialize({
+    // reveal.js configuration, cf. https://github.com/hakimel/reveal.js-3.5.0/#configuration
+    controls: true,
+    progress: true,
+    history: true,
+    center: false,
+    transition: 'none',
+    slideNumber: 'c/t',
+    width: 960,
+    height: 800,
+    fragments: true,
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+      // enable built-in plugins
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/zoom-js/zoom.js' },
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/notes/notes.js' },
+      { src: 'https://cdn.rawgit.com/hakimel/reveal.js/3.5.0/plugin/math/math.js' },
+
+      // enable additionally installed plugins
+      // { src: './reveal.js-menu-0.8.0/menu.js' },
+      // { src: './reveal.js-3.5.0/plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } },
+      // { src: './reveal.js-3.5.0/plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } },
+    ],
+
+    // plugin settings
+
+    // plugin math, cf. https://github.com/hakimel/reveal.js#mathjax
+    // math: {
+    //     mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+    //     config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    // },
+
+    // plugin menu, cf. https://github.com/denehyg/reveal.js-menu#configuration
+    menu: {
+        side: 'left',
+        numbers: false,
+        titleSelector: 'h1, h2, h3, h4, h5, h6',
+        hideMissingTitles: false,
+        markers: false,
+        custom: false,
+        themes: [
+            { name: 'Black', theme: './reveal.js-3.5.0/css/theme/black.css' },
+            { name: 'White', theme: './reveal.js-3.5.0/css/theme/white.css' },
+            { name: 'League', theme: './reveal.js-3.5.0/css/theme/league.css' },
+            { name: 'Sky', theme: './reveal.js-3.5.0/css/theme/sky.css' },
+            { name: 'Beige', theme: './reveal.js-3.5.0/css/theme/beige.css' },
+            { name: 'Simple', theme: './reveal.js-3.5.0/css/theme/simple.css' },
+            { name: 'Serif', theme: './reveal.js-3.5.0/css/theme/serif.css' },
+            { name: 'Blood', theme: './reveal.js-3.5.0/css/theme/blood.css' },
+            { name: 'Night', theme: './reveal.js-3.5.0/css/theme/night.css' },
+            { name: 'Moon', theme: './reveal.js-3.5.0/css/theme/moon.css' },
+            { name: 'Solarized', theme: './reveal.js-3.5.0/css/theme/solarized.css' }
+        ],
+        transitions: true,
+        openButton: true,
+        openSlideNumber: true,
+        keyboard: true
+    },
+});
+        </script>
+    </body>
+</html>
