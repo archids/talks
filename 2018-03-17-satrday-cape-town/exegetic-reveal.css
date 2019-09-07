@@ -3,6 +3,12 @@
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
 
+/*
+ * Other good fonts:
+ *
+ * - Yanone Kaffeesatz
+ */
+
 body {
 	background: none;
 	font-family: Quicksand;
@@ -200,7 +206,7 @@ ul > li > code {
 }
 
 .reveal pre code {
-	line-height: 1.05em;
+	line-height: 1.25em;
 	max-height: none;
 	overflow-y: hidden;
 }
@@ -222,7 +228,7 @@ mark {
 /* ------------------------------------------------------------------------- */
 
 .reveal ol {
-	/*list-style-position: inside;*/
+	list-style-position: inside;
 }
 
 .reveal ul {
@@ -240,6 +246,12 @@ ul > li {/*
 ul > li::before {
 	/*content: "• ";*/
 	content: "● ";
+	font-size: 1em;
+	color: rgba(56, 99, 160, 1.0);
+}
+
+ul > ul > li::before {
+	content: "- ";
 	font-size: 1em;
 	color: rgba(56, 99, 160, 1.0);
 }
@@ -293,6 +305,35 @@ body > div.reveal.none.ready > div.slides > section.stack.present > section.pres
 // Odd-numbered rows.
 //
 tbody tr:nth-child(2n-1) {
+}
+
+/* -- Quiz ----------------------------------------------------------------- */
+
+.reveal .quiz {
+	display: block;
+	background-color: rgba(56, 99, 160, 0.2);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.reveal .exercise {
+	display: block;
+	background-color: rgba(56, 99, 160, 0.2);
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.reveal .quiz > ul,
+.reveal .exercise > ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 /* -- Logo ----------------------------------------------------------------- */
